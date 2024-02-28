@@ -1,6 +1,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import RouterComponent from '@/components/landing/RouterComponent.vue';
 
 const pines = ref([
   {
@@ -30,44 +31,39 @@ const pines = ref([
 <template>
   <div class="text-center" style="width: 100vw; height: 100vh;" id="parent">
     <div class="text-light bg-success">
-      <h1 class="">Quien esta viendo ahora?</h1>
+      <h1 class="">¿Quién está viendo ahora?</h1>
       <div class="d-flex justify-content-center">
         <div class="row ">
           <div v-for="pin of pines" :key="pin.id" class="col sm-2 m-2" id="pin">
             <div class="card" style="width: auto;">
-              <button class="border-0">
+              <router-link to="/browse" class="border-0 router">
                 <img :src="`${pin.img}`" class="card-img-top rounded-1" alt="profile4">
-                <div class="card-body">
-                  <p class="card-text text-light">
-
+                <div class="card-body mt-1">
+                  <p class="text-secondary">
                     {{ pin.number }}
-
                   </p>
                 </div>
-              </button>
+              </router-link>
               <p class="card-text text-light"> <i class="bi bi-lock" style="color: rgb(135, 135, 135)"></i> </p>
             </div>
           </div>
 
           <div class="col sm-2 m-2" id="pin">
             <div class="card " style="width: auto;">
-              <button class="border-0 mb-2">
+              <router-link to="/browse" class="border-0 mb-2 router">
                 <i class="bi bi-plus-circle" style="font-size: 4.2rem;  "></i>
                 <div class="card-body mx-0 mt-4">
                   <h6 class="card-text text-light">Agregar perfil</h6>
                 </div>
-              </button>
+              </router-link>
               <p class="card-text text-light"><i class="bi bi-lock" style="color: rgb(135, 135, 135)"></i> </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
-
 
 
 <style scoped>
@@ -77,7 +73,10 @@ const pines = ref([
   background-color: rgb(20, 20, 20);
 }
 
-
+.router {
+  text-decoration: none;
+  /* Quita el subrayado */
+}
 
 #parent {
 
@@ -96,12 +95,13 @@ i {
 }
 
 
-button:hover img {
-  outline: 2px solid rgb(255, 255, 255);
-  border-radius: 20px;
+.router:hover img {
+  outline: 2.5px solid rgb(255, 255, 255);
+  border-radius: 200px;
 }
 
-button:hover p {
-  font-weight: 500;
+.router:hover p {
+  font-weight: 450;
+  color: aliceblue !important;
 }
 </style>
