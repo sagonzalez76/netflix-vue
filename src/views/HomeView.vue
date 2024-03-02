@@ -1,18 +1,31 @@
 <script setup>
-import FooterComponent from '@/components/landing/FooterComponent.vue';
-import HeaderComponent from '@/components/landing/HeaderComponent.vue';
-import LoginFormComponent from '@/components/login/LoginFormComponent.vue';
-// import SecondaryHeroComponent from '@/components/landing/SecondaryHeroComponent.vue';
-// import TertiaryHeroComponent from '@/components/landing/TertiaryHeroComponent.vue';
-// import CuaternaryHeroComponent from '@/components/landing/CuaternaryHeroComponent.vue';
-// import FooterComponent from '@/components/landing/FooterComponent.vue';
+import HeaderComponent from '@/components/home/HeaderHomeComponent.vue';
+import MainHeroComponent from '@/components/home/MainHeroComponent.vue';
+import CarouselMoviesComponent from '@/components/home/CarouselMoviesComponent.vue';
+
+import { useMoviesStore } from '@/stores/movies'
+import { onMounted, ref } from 'vue';
+
+let moviesStore = useMoviesStore()
+let popular = ref(null); // Inicializa como null
+
+
+onMounted(async () => {
+    await moviesStore.popularMovies()
+    console.log(moviesStore.popular);
+    popular.value = moviesStore.popular // Actualizamos la variable local `popular`
+
+})
+
+
 </script>
 
 <template>
     <main class="">
         <section class="mb-5" id="firstHero">
-            <HeaderComponent :router="false" class="component-header"></HeaderComponent>
-            <LoginFormComponent class="component-body"></LoginFormComponent>
+            <HeaderComponent :router="true" class="component-header"></HeaderComponent>
+            <CarouselMoviesComponent :movies="popular"></CarouselMoviesComponent>
+            <!-- <MainHeroComponent></MainHeroComponent> -->
         </section>
 
         <!-- <section class="">
@@ -21,7 +34,7 @@ import LoginFormComponent from '@/components/login/LoginFormComponent.vue';
             <CuaternaryHeroComponent></CuaternaryHeroComponent>
         </section> -->
         <section class="">
-            <FooterComponent></FooterComponent>
+            <!-- <FooterComponent></FooterComponent> -->
         </section>
 
 
@@ -32,7 +45,7 @@ import LoginFormComponent from '@/components/login/LoginFormComponent.vue';
 
 <style scoped>
 main {
-    background-color: black;
+    background-color: rgb(167, 83, 83);
 }
 
 #firstHero {
@@ -41,12 +54,12 @@ main {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-image: url("https://genotipia.com/wp-content/uploads/2020/04/Netflix-Background-prueba-1-1536x864.jpg");
+    /* background-image: url("https://genotipia.com/wp-content/uploads/2020/04/Netflix-Background-prueba-1-1536x864.jpg");
     background-size: cover;
     background-position: center;
     box-shadow: inset 10px 0px 5rem 20rem rgba(0, 0, 0, 0.571),
         inset 0px 3rem 100px 1px rgb(0, 0, 0),
-        inset 0px -2rem 200px 10px rgb(0, 0, 0);
+        inset 0px -2rem 200px 10px rgb(0, 0, 0); */
     /* Ajusta el desenfoque vertical (5rem) según sea necesario */
     /* Sombra negra con desenfoque */
     opacity: 0.9;

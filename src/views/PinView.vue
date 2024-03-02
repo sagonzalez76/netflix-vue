@@ -1,7 +1,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import RouterComponent from '@/components/landing/RouterComponent.vue';
 
 const pines = ref([
   {
