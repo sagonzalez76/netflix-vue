@@ -61,7 +61,6 @@ header{
 }
 main {
     background-color: rgb(14, 14, 14);
-    scroll-behavior: smooth;
 }
 
 #firstHero {
