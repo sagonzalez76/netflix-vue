@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container col-xxl-8 px-0 py-5 my-5">
+    <div class="container col-xxl-8 px-0 py-5 my-5 w-75">
       <div class="row flex-lg-row align-items-center g-5 py-5 text-center">
         <div class="col-12 text-center px-0">
 

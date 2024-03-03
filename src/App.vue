@@ -11,6 +11,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
 *{
   font-size: 16px;
+  
+      scroll-behavior: smooth;
+  
 }
+
 
 </style>

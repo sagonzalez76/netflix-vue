@@ -5,12 +5,19 @@ import axios from 'axios';
 export const useMoviesStore = defineStore('movies', () => {
 
     let popular = ref([])
-    let url = 'https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1'
+    let top = ref([])
+    let upcoming = ref([])
+
+    let urlPopular = 'https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1'
+    let urlTop = 'https://api.themoviedb.org/3/movie/top_rated?language=es-US&page=1'
+    let urlUpcoming = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1'
+
+
     let apiKey = import.meta.env.VITE_API_KEY;
 
     const popularMovies = async () => {
         try {
-            const response = await axios.get(url, {
+            const response = await axios.get(urlPopular, {
                 headers: {
                     'Authorization': `Bearer ${apiKey}`
                 }
@@ -23,7 +30,39 @@ export const useMoviesStore = defineStore('movies', () => {
         }
     };
 
-    return { popular, popularMovies }
+
+    const topMovies = async () => {
+        try {
+            const response = await axios.get(urlTop, {
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`
+                }
+            });
+
+            top.value = response.data; // Se almacena la respuesta de la api
+            console.log(top.value);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
+    const upcomingMovies = async () => {
+        try {
+            const response = await axios.get(urlUpcoming, {
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`
+                }
+            });
+
+            upcoming.value = response.data; // Se almacena la respuesta de la api
+            console.log(upcoming.value);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return { popular, top,upcoming, popularMovies, topMovies, upcomingMovies}
 
 })
 

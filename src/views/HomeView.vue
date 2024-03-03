@@ -1,21 +1,26 @@
 <script setup>
 import HeaderComponent from '@/components/home/HeaderHomeComponent.vue';
-import MainHeroComponent from '@/components/home/MainHeroComponent.vue';
-import CarouselMoviesComponent from '@/components/home/CarouselMoviesComponent.vue';
-
-import { useMoviesStore } from '@/stores/movies'
-import { onMounted, ref } from 'vue';
-
-let moviesStore = useMoviesStore()
-let popular = ref(null); // Inicializa como null
+import PopularMoviesComponent from '@/components/home/PopularMoviesComponent.vue';
+import TopMoviesComponent from '@/components/home/TopMoviesComponent.vue';
+import UpcomingMoviesComponent from '@/components/home/UpcomingMoviesComponent.vue';
 
 
-onMounted(async () => {
-    await moviesStore.popularMovies()
-    console.log(moviesStore.popular);
-    popular.value = moviesStore.popular // Actualizamos la variable local `popular`
+// import { useMoviesStore } from '@/stores/movies'
+// import { onMounted, ref } from 'vue';
 
-})
+// let moviesStore = useMoviesStore()
+
+
+
+// onMounted(async () => {
+//     // Inicializa como null
+//     let popular = ref([
+//     ]);
+//     await moviesStore.popularMovies()
+//     console.log(moviesStore.popular);
+//     popular.value = moviesStore.popular // Actualizamos la variable local `popular`
+
+// })
 
 
 </script>
@@ -23,9 +28,14 @@ onMounted(async () => {
 <template>
     <main class="">
         <section class="mb-5" id="firstHero">
-            <HeaderComponent :router="true" class="component-header"></HeaderComponent>
-            <CarouselMoviesComponent :movies="popular"></CarouselMoviesComponent>
-            <!-- <MainHeroComponent></MainHeroComponent> -->
+            <HeaderComponent :router="true" class="component-header sticky-top ps-5 mx-0"></HeaderComponent>
+
+            <UpcomingMoviesComponent class="carousel my-5 "></UpcomingMoviesComponent>
+            <PopularMoviesComponent class="my-5"></PopularMoviesComponent>
+            <TopMoviesComponent class="my-5"></TopMoviesComponent>
+            <UpcomingMoviesComponent class="carousel my-5 "></UpcomingMoviesComponent>
+            <PopularMoviesComponent class="my-5"></PopularMoviesComponent>
+            <TopMoviesComponent class="my-5"></TopMoviesComponent>
         </section>
 
         <!-- <section class="">
@@ -44,8 +54,14 @@ onMounted(async () => {
 
 
 <style scoped>
+
+header{
+    background-color: rgb(14, 14, 14);
+
+}
 main {
-    background-color: rgb(167, 83, 83);
+    background-color: rgb(14, 14, 14);
+    scroll-behavior: smooth;
 }
 
 #firstHero {
@@ -70,10 +86,24 @@ main {
 
 
 .component-header {
-    min-height: 10vh;
+    min-height: 5vh; 
+     max-height: 90vh;
+     max-width: 100vw;
+     
 }
 
-.component-header {
-    max-height: 90vh;
+
+@media (max-width: 1024px) {
+    .carousel {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+        .component-header {
+           
+            padding-left: 10px !important;
+    
+        }
 }
+
+
 </style>

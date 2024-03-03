@@ -1,5 +1,5 @@
 <template>
-  <header class="p-2 mb-0 bg-oppacity-0">
+  <header class="p-2 mb-0 ">
     <div class="margin mx-2">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 me-lg-2 link-body-emphasis text-decoration-none">

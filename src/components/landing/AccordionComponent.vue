@@ -1,5 +1,5 @@
 <template>
-    <div class="accordion accordion-flush " id="accordionFlushExample">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item my-1 border-0">
             <h2 class="accordion-header ">
                 <button class="accordion-button collapsed bg-dark text-light fw-semibold fs-3" type="button"
