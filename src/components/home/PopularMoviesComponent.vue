@@ -36,13 +36,14 @@ const fourthFivePopular = slicePopular(15, 20);
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+
             <div class="carousel-item active ">
                 <div class="">
                     <div class="d-flex justify-content-center">
                         <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
                             v-for="pop in firstFivePopular" :key="pop.id">
                             <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w400/${pop.backdrop_path}`"
+                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
                                 alt="Placeholder: First slide">
                             <!-- <div class="text">
                                 <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
@@ -59,7 +60,7 @@ const fourthFivePopular = slicePopular(15, 20);
                         <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
                             v-for="pop in secondFivePopular" :key="pop.id">
                             <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w300/${pop.backdrop_path}`"
+                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
                                 alt="Placeholder: First slide">
                             <!-- <div class="text">
                                 <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
@@ -69,13 +70,14 @@ const fourthFivePopular = slicePopular(15, 20);
                     </div>
                 </div>
             </div>
+
             <div class="carousel-item">
                 <div class="">
                     <div class="d-flex justify-content-center">
                         <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
                             v-for="pop in thirdFivePopular" :key="pop.id">
                             <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w300/${pop.backdrop_path}`"
+                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
                                 alt="Placeholder: First slide">
                             <!-- <div class="text">
                                 <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
@@ -91,7 +93,7 @@ const fourthFivePopular = slicePopular(15, 20);
                         <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
                             v-for="pop in fourthFivePopular" :key="pop.id">
                             <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w300/${pop.backdrop_path}`"
+                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
                                 alt="Placeholder: First slide">
                             <!-- <div class="text">
                                 <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}

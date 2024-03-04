@@ -13,7 +13,10 @@ export const useMoviesStore = defineStore('movies', () => {
     let urlUpcoming = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1'
 
 
-    let apiKey = import.meta.env.VITE_API_KEY;
+    // let apiKey = import.meta.env.VITE_API_KEY;
+    let apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZTQ2YjI5MjU4NDBjZTkwYjlmNTczMzQzNmI2NTE0OSIsInN1YiI6IjY1Y2MzMzBhZTIxMDIzMDE2MmMyZWE5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eOfjw7WYwQNvqvpfNEBaRMPGzq3hEOe7xStqPFV0ftA";
+
+
 
     const popularMovies = async () => {
         try {

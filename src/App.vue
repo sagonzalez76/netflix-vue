@@ -8,16 +8,14 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-html{
+html {
 
-      scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-*{
+
+* {
   font-size: 16px;
-  
-      scroll-behavior: smooth;
-  
+  scroll-behavior: smooth;
+
 }
-
-
 </style>
