@@ -27,15 +27,12 @@ import UpcomingMoviesComponent from '@/components/home/UpcomingMoviesComponent.v
 
 <template>
     <main class="">
-        <section class="mb-5" id="firstHero">
+        <section class="mb-5 pb-5" id="firstHero">
             <HeaderComponent :router="true" class="component-header sticky-top ps-5 mx-0"></HeaderComponent>
 
-            <UpcomingMoviesComponent class="carousel my-5 "></UpcomingMoviesComponent>
             <PopularMoviesComponent class="my-5"></PopularMoviesComponent>
             <TopMoviesComponent class="my-5"></TopMoviesComponent>
-            <UpcomingMoviesComponent class="carousel my-5 "></UpcomingMoviesComponent>
-            <PopularMoviesComponent class="my-5"></PopularMoviesComponent>
-            <TopMoviesComponent class="my-5"></TopMoviesComponent>
+            <UpcomingMoviesComponent class="my-5 "></UpcomingMoviesComponent>
         </section>
 
         <!-- <section class="">

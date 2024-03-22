@@ -8,25 +8,24 @@ export const useMoviesStore = defineStore('movies', () => {
     let top = ref([])
     let upcoming = ref([])
 
-    let urlPopular = 'https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1'
-    let urlTop = 'https://api.themoviedb.org/3/movie/top_rated?language=es-US&page=1'
-    let urlUpcoming = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1'
+    let urlPopular = 'https://api.themoviedb.org/3/movie/popular?language=es-ES&page='
+    let urlTop = 'https://api.themoviedb.org/3/movie/top_rated?language=es-US&page='
+    let urlUpcoming = 'https://api.themoviedb.org/3/movie/upcoming?language=es-ES&page='
 
-
-    // let apiKey = import.meta.env.VITE_API_KEY;
-    let apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZTQ2YjI5MjU4NDBjZTkwYjlmNTczMzQzNmI2NTE0OSIsInN1YiI6IjY1Y2MzMzBhZTIxMDIzMDE2MmMyZWE5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eOfjw7WYwQNvqvpfNEBaRMPGzq3hEOe7xStqPFV0ftA";
-
-
+    let apiKey = import.meta.env.VITE_API_KEY;
 
     const popularMovies = async () => {
         try {
-            const response = await axios.get(urlPopular, {
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`
-                }
-            });
-
-            popular.value = response.data; // Se almacena la respuesta de la api
+            let allResults = [];
+            for (let page = 1; page <= 2; page++) { // Iterar sobre las primeras 3 páginas
+                const response = await axios.get(urlPopular + page, {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                allResults.push(...response.data.results); // Agregar los resultados de esta página al array
+            }
+            popular.value = allResults; // Asignar todos los resultados al ref popular
             console.log(popular.value);
         } catch (error) {
             console.error(error);
@@ -34,15 +33,19 @@ export const useMoviesStore = defineStore('movies', () => {
     };
 
 
+
     const topMovies = async () => {
         try {
-            const response = await axios.get(urlTop, {
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`
-                }
-            });
-
-            top.value = response.data; // Se almacena la respuesta de la api
+            let allResults = [];
+            for (let page = 1; page <= 2; page++) { // Iterar sobre las primeras 3 páginas
+                const response = await axios.get(urlTop + page, {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                allResults.push(...response.data.results); // Agregar los resultados de esta página al array
+            }
+            top.value = allResults;
             console.log(top.value);
         } catch (error) {
             console.error(error);
@@ -52,20 +55,23 @@ export const useMoviesStore = defineStore('movies', () => {
 
     const upcomingMovies = async () => {
         try {
-            const response = await axios.get(urlUpcoming, {
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`
-                }
-            });
-
-            upcoming.value = response.data; // Se almacena la respuesta de la api
+            let allResults = [];
+            for (let page = 1; page <= 2; page++) { // Iterar sobre las primeras 3 páginas
+                const response = await axios.get(urlUpcoming + page, {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                allResults.push(...response.data.results); // Agregar los resultados de esta página al array
+            }
+            upcoming.value = allResults;
             console.log(upcoming.value);
         } catch (error) {
             console.error(error);
         }
     };
 
-    return { popular, top,upcoming, popularMovies, topMovies, upcomingMovies}
+    return { popular, top, upcoming, popularMovies, topMovies, upcomingMovies }
 
 })
 

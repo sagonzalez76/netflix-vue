@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import MovieDetail from '@/components/home/movieDetail/MovieDetail.vue'
 
 
 
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/pin',
       name: 'pin',
       component: () => import('../views/PinView.vue')
+    },
+    {
+      path: '/movie/:id',
+      name: 'MovieDetail',
+      component: MovieDetail
     }
     // {
     //   path: '/about',

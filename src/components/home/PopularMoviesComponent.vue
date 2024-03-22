@@ -1,29 +1,30 @@
 <script setup>
 import { useMoviesStore } from '@/stores/movies';
+import CarouselComponent from './carousel/CarouselComponent.vue';
 import { computed, onMounted, ref } from 'vue';
 
 const moviesStore = useMoviesStore();
-const popular = ref(null);
+let popular = ref(null);
 
 onMounted(async () => {
     await moviesStore.popularMovies();
-    popular.value = moviesStore.popular.results;
+    popular.value = moviesStore.popular;
 });
 
 const slicePopular = (start, end) => {
     return computed(() => popular.value ? popular.value.slice(start, end) : []);
 };
-
-const firstFivePopular = slicePopular(0, 5);
-const secondFivePopular = slicePopular(5, 10);
-const thirdFivePopular = slicePopular(10, 15);
-const fourthFivePopular = slicePopular(15, 20);
+const firstSixPopular = slicePopular(0, 6);
+const secondSixPopular = slicePopular(6, 12);
+const thirdSixPopular = slicePopular(12, 18);
+const fourthSixPopular = slicePopular(18, 24);
+const fifthSixPopular = slicePopular(24, 30);
 
 </script>
 
 <template>
+    <!-- <h1 class="text-light">{{popular.value}}</h1> -->
     <div id="carousel1" class="carousel slide ">
-
         <h4 class="ms-5 ps-4 text-light">Populares</h4>
         <div class="carousel-inner">
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev"
@@ -36,74 +37,12 @@ const fourthFivePopular = slicePopular(15, 20);
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-
-            <div class="carousel-item active ">
-                <div class="">
-                    <div class="d-flex justify-content-center">
-                        <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
-                            v-for="pop in firstFivePopular" :key="pop.id">
-                            <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
-                                alt="Placeholder: First slide">
-                            <!-- <div class="text">
-                                <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
-                                </h6>
-                            </div> -->
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="">
-                    <div class="d-flex justify-content-center">
-                        <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
-                            v-for="pop in secondFivePopular" :key="pop.id">
-                            <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
-                                alt="Placeholder: First slide">
-                            <!-- <div class="text">
-                                <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
-                                </h6>
-                            </div> -->
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="">
-                    <div class="d-flex justify-content-center">
-                        <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
-                            v-for="pop in thirdFivePopular" :key="pop.id">
-                            <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
-                                alt="Placeholder: First slide">
-                            <!-- <div class="text">
-                                <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
-                                </h6>
-                            </div> -->
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="">
-                    <div class="d-flex justify-content-center">
-                        <router-link to="/" class="mx-1 bg-dark rounded-1 text-decoration-none"
-                            v-for="pop in fourthFivePopular" :key="pop.id">
-                            <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 rounded-1 "
-                                style="max-width: 18vw;" :src="`https://image.tmdb.org/t/p/w500/${pop.backdrop_path}`"
-                                alt="Placeholder: First slide">
-                            <!-- <div class="text">
-                                <h6 class="text-center text-light text fs-6" style="max-width:30ch;">{{ pop.title }}
-                                </h6>
-                            </div> -->
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-
+          
+            <CarouselComponent :data=firstSixPopular class="active"></CarouselComponent>
+            <CarouselComponent :data=secondSixPopular></CarouselComponent>
+            <CarouselComponent :data=thirdSixPopular></CarouselComponent>
+            <CarouselComponent :data=fourthSixPopular></CarouselComponent>
+            <CarouselComponent :data=fifthSixPopular></CarouselComponent>
         </div>
 
     </div>
@@ -111,12 +50,11 @@ const fourthFivePopular = slicePopular(15, 20);
 </template>
 
 
-<style scoped>
+<style>
 @media (max-width: 800px) {
 
     h1,
-    h2,
-    h3,
+
     h4 {
         margin-left: 10px !important;
     }
